@@ -39,11 +39,54 @@
     <header>
         <h1>Kurt Cobain </h1>
         <p>Kurt Cobain foi um cantor, compositor e guitarrista norte-americano que se tornou um dos maiores símbolos da música nos anos 1990. Como vocalista da banda Nirvana, conquistou reconhecimento mundial por suas letras marcantes, seu estilo autêntico e sua forte influência na popularização do grunge. </p>
+        <img src="kurt.jpeg" alt="kurt Cobain">
     </header>
     <main>
         <h2>O Nirvana </h2>
         <p>O Nirvana foi formado em 1987 por Kurt Cobain e Krist Novoselic, tornando-se uma das bandas mais importantes da década de 1990. Com o lançamento do álbum Nevermind, o grupo alcançou sucesso mundial e ajudou a popularizar o movimento grunge, levando um som mais pesado e letras profundas ao grande público. </p>
         <p>Além de sucessos como "Smells Like Teen Spirit", "Come as You Are" e "Lithium", o Nirvana deixou um legado duradouro na música. Mesmo após o fim da banda em 1994, suas canções continuam influenciando artistas e conquistando novas gerações de fãs ao redor do mundo. </p>
+        <div style="text-align:center; margin-top:20px;">
+    <button onclick="like()" style="
+        background-color:#28a745;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        font-size:18px;
+        border-radius:8px;
+        cursor:pointer;
+        margin-right:10px;
+    ">
+        👍 Like <span id="likes">0</span>
+    </button>
+
+    <button onclick="dislike()" style="
+        background-color:#ff3333;
+        color:white;
+        border:none;
+        padding:12px 25px;
+        font-size:18px;
+        border-radius:8px;
+        cursor:pointer;
+    ">
+        👎 Dislike <span id="dislikes">0</span>
+    </button>
+</div>
+
+<script>
+let likes = 0;
+let dislikes = 0;
+
+function like() {
+    likes++;
+    document.getElementById("likes").textContent = likes;
+}
+
+function dislike() {
+    dislikes++;
+    document.getElementById("dislikes").textContent = dislikes;
+}
+</script>
+
     </main>
 </body>
 </html>
