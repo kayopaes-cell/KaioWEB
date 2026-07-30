@@ -73,19 +73,27 @@
 </div>
 
 <script>
-let likes = 0;
-let dislikes = 0;
+// Carrega os valores salvos ou começa com 0
+let likes = localStorage.getItem("likes") || 0;
+let dislikes = localStorage.getItem("dislikes") || 0;
+
+// Exibe os valores ao abrir a página
+document.getElementById("likes").textContent = likes;
+document.getElementById("dislikes").textContent = dislikes;
 
 function like() {
     likes++;
+    localStorage.setItem("likes", likes);
     document.getElementById("likes").textContent = likes;
 }
 
 function dislike() {
     dislikes++;
+    localStorage.setItem("dislikes", dislikes);
     document.getElementById("dislikes").textContent = dislikes;
 }
 </script>
+
 
 </main>
 </body>
