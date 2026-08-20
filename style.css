@@ -5,27 +5,29 @@
   box-sizing: border-box;
 }
 
-/* Centraliza o conteúdo na tela e define a cor de fundo */
+/* Centraliza o conteúdo e aplica fundo preto com texto branco */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f4f4f9;
+  background-color: #000000;
+  color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Espaçamento do container principal */
+/* Container do painel escuro */
 .reaction-container {
   display: flex;
   gap: 16px;
-  background-color: #ffffff;
+  background-color: #121212;
   padding: 20px 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
 }
 
-/* Estilo base dos botões */
+/* Estilo base dos botões no modo escuro */
 .btn {
   display: flex;
   align-items: center;
@@ -33,9 +35,9 @@ body {
   padding: 12px 24px;
   font-size: 18px;
   font-weight: 600;
-  color: #444;
-  background-color: #f8f9fa;
-  border: 2px solid #e9ecef;
+  color: #ffffff;
+  background-color: #1e1e1e;
+  border: 2px solid #333333;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -43,7 +45,8 @@ body {
 
 /* Efeito ao passar o mouse */
 .btn:hover {
-  background-color: #e9ecef;
+  background-color: #2c2c2c;
+  border-color: #555555;
   transform: translateY(-2px);
 }
 
@@ -54,14 +57,14 @@ body {
 
 /* Estilo quando o Like estiver ativado */
 .like-active {
-  background-color: #d1e7dd;
+  background-color: #0f5132;
   border-color: #198754;
-  color: #0f5132;
+  color: #ffffff;
 }
 
 /* Estilo quando o Dislike estiver ativado */
 .dislike-active {
-  background-color: #f8d7da;
+  background-color: #842029;
   border-color: #dc3545;
-  color: #842029;
+  color: #ffffff;
 }
