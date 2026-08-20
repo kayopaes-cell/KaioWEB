@@ -18,56 +18,16 @@
         <p>Além de sucessos como "Smells Like Teen Spirit", "Come as You Are" e "Lithium", o Nirvana deixou um legado duradouro na música. Mesmo após o fim da banda em 1994, suas canções continuam influenciando artistas e conquistando novas gerações de fãs ao redor do mundo.
             Feito por Kayo </p>
         <div style="text-align:center; margin-top:20px;">
-    <button onclick="like()" style="
-        background-color:#28a745;
-        color:white;
-        border:none;
-        padding:12px 25px;
-        font-size:18px;
-        border-radius:8px;
-        cursor:pointer;
-        margin-right:10px;
-    ">
-        👍 Like <span id="likes">0</span>
+    <div class="actions-container">
+    <button id="like-btn" class="btn-action">
+      <i class="fa-regular fa-thumbs-up"></i>
+      <span id="like-count">0</span>
     </button>
 
-    <button onclick="dislike()" style="
-        background-color:#ff3333;
-        color:white;
-        border:none;
-        padding:12px 25px;
-        font-size:18px;
-        border-radius:8px;
-        cursor:pointer;
-    ">
-        👎 Dislike <span id="dislikes">0</span>
+    <button id="dislike-btn" class="btn-action">
+      <i class="fa-regular fa-thumbs-down"></i>
+      <span id="dislike-count">0</span>
     </button>
-</div>
+  </div>
 
-<script>
-
-let likes = localStorage.getItem("likes") || 0;
-let dislikes = localStorage.getItem("dislikes") || 0;
-
-
-document.getElementById("likes").textContent = likes;
-document.getElementById("dislikes").textContent = dislikes;
-
-function like() {
-    likes++;
-    localStorage.setItem("likes", likes);
-    document.getElementById("likes").textContent = likes;
-}
-
-function dislike() {
-    dislikes++;
-    localStorage.setItem("dislikes", dislikes);
-    document.getElementById("dislikes").textContent = dislikes;
-}
-</script>
-
-
-</main>
-</body>
-
-</html>
+  <script src="script.js"></script>

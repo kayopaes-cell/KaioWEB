@@ -27,4 +27,38 @@
             border-radius:10px;
             margin-top:15px;
         }
+        .actions-container {
+  display: flex;
+  gap: 12px;
+  font-family: Arial, sans-serif;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background-color: #e0e0e0;
+}
+
+.btn-action.like-active {
+  background-color: #e6f4ea;
+  color: #137333;
+  border-color: #137333;
+}
+
+.btn-action.dislike-active {
+  background-color: #fce8e6;
+  color: #c5221f;
+  border-color: #c5221f;
+}
     </style>
