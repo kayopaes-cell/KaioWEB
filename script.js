@@ -1,10 +1,8 @@
-// Elementos do DOM
 const likeBtn = document.getElementById('like-btn');
 const dislikeBtn = document.getElementById('dislike-btn');
 const likeCount = document.getElementById('like-count');
 const dislikeCount = document.getElementById('dislike-count');
 
-// Estado inicial com leitura direta do localStorage
 const state = {
   like: {
     count: parseInt(localStorage.getItem('like_count')) || 0,
@@ -22,7 +20,6 @@ const state = {
   }
 };
 
-// Salva e atualiza o estado visual
 function syncUI() {
   ['like', 'dislike'].forEach(type => {
     const item = state[type];
@@ -33,17 +30,14 @@ function syncUI() {
   });
 }
 
-// Lógica de alternância
 function handleReaction(type) {
   const current = state[type];
   const opposite = state[type === 'like' ? 'dislike' : 'like'];
 
-  
   if (opposite.active) {
     opposite.active = false;
     opposite.count = Math.max(0, opposite.count - 1);
   }
-
 
   current.active = !current.active;
   current.count += current.active ? 1 : -1;
@@ -52,11 +46,7 @@ function handleReaction(type) {
   syncUI();
 }
 
-
-
-// Event Listeners
 likeBtn.addEventListener('click', () => handleReaction('like'));
 dislikeBtn.addEventListener('click', () => handleReaction('dislike'));
 
-// Renderização inicial
 syncUI();
