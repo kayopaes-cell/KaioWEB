@@ -62,6 +62,7 @@ p {
 /* Container dos botões */
 .reaction-container {
   display: flex;
+  flex-wrap: wrap; /* Adicionado para quebrar a linha */
   justify-content: center;
   gap: 16px;
   margin-top: 24px;
