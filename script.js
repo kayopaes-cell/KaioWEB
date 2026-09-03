@@ -1,58 +1,63 @@
-// Seleciona todos os cards da página
-const cards = document.querySelectorAll('.card');
+document.addEventListener('DOMContentLoaded', () => {
+  // Seleciona todos os cards da página
+  const cards = document.querySelectorAll('.card');
 
-cards.forEach((card, index) => {
-  const likeBtn = card.querySelector('.like-btn');
-  const dislikeBtn = card.querySelector('.dislike-btn');
-  const likeCount = card.querySelector('.like-count');
-  const dislikeCount = card.querySelector('.dislike-count');
+  cards.forEach((card, index) => {
+    const likeBtn = card.querySelector('.like-btn');
+    const dislikeBtn = card.querySelector('.dislike-btn');
+    const likeCount = card.querySelector('.like-count');
+    const dislikeCount = card.querySelector('.dislike-count');
 
-  // Recupera o estado individual de cada card usando o índice
-  let state = {
-    like: {
-      count: parseInt(localStorage.getItem(`card_${index}_like_count`)) || 0,
-      active: localStorage.getItem(`card_${index}_like_active`) === 'true',
-      btn: likeBtn,
-      countEl: likeCount,
-      activeClass: 'like-active'
-    },
-    dislike: {
-      count: parseInt(localStorage.getItem(`card_${index}_dislike_count`)) || 0,
-      active: localStorage.getItem(`card_${index}_dislike_active`) === 'true',
-      btn: dislikeBtn,
-      countEl: dislikeCount,
-      activeClass: 'dislike-active'
+    // Carrega do localStorage os dados específicos deste card
+    let likes = parseInt(localStorage.getItem(`card_${index}_likes`)) || 0;
+    let dislikes = parseInt(localStorage.getItem(`card_${index}_dislikes`)) || 0;
+    let userReaction = localStorage.getItem(`card_${index}_userReaction`) || null;
+
+    // Atualiza a interface gráfica
+    function render() {
+      likeCount.textContent = likes;
+      dislikeCount.textContent = dislikes;
+
+      likeBtn.classList.toggle('like-active', userReaction === 'like');
+      dislikeBtn.classList.toggle('dislike-active', userReaction === 'dislike');
+
+      // Salva a reação do usuário
+      localStorage.setItem(`card_${index}_likes`, likes);
+      localStorage.setItem(`card_${index}_dislikes`, dislikes);
+      localStorage.setItem(`card_${index}_userReaction`, userReaction || '');
     }
-  };
 
-  function syncUI() {
-    ['like', 'dislike'].forEach(type => {
-      const item = state[type];
-      item.countEl.textContent = item.count;
-      item.btn.classList.toggle(item.activeClass, item.active);
-      localStorage.setItem(`card_${index}_${type}_count`, item.count);
-      localStorage.setItem(`card_${index}_${type}_active`, item.active);
+    // Clique no botão de Like
+    likeBtn.addEventListener('click', () => {
+      if (userReaction === 'like') {
+        likes--;
+        userReaction = null;
+      } else {
+        if (userReaction === 'dislike') {
+          dislikes--;
+        }
+        likes++;
+        userReaction = 'like';
+      }
+      render();
     });
-  }
 
-  function handleReaction(type) {
-    const current = state[type];
-    const opposite = state[type === 'like' ? 'dislike' : 'like'];
+    // Clique no botão de Dislike
+    dislikeBtn.addEventListener('click', () => {
+      if (userReaction === 'dislike') {
+        dislikes--;
+        userReaction = null;
+      } else {
+        if (userReaction === 'like') {
+          likes--;
+        }
+        dislikes++;
+        userReaction = 'dislike';
+      }
+      render();
+    });
 
-    if (opposite.active) {
-      opposite.active = false;
-      opposite.count = Math.max(0, opposite.count - 1);
-    }
-
-    current.active = !current.active;
-    current.count += current.active ? 1 : -1;
-    current.count = Math.max(0, current.count);
-
-    syncUI();
-  }
-
-  likeBtn.addEventListener('click', () => handleReaction('like'));
-  dislikeBtn.addEventListener('click', () => handleReaction('dislike'));
-
-  syncUI();
+    // Renderiza o estado inicial ao carregar a página
+    render();
+  });
 });
