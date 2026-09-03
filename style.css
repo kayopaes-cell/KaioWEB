@@ -1,28 +1,37 @@
-* {
+* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   background-color: #000000;
   color: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
 }
 
-/* Card centralizado que organiza a página */
+/* Container flex que aceita quebra de linha (flex-wrap) */
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;       /* Faz quebrar de linha quando não couber */
+  justify-content: center;
+  gap: 24px;             /* Distância entre cada card */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Estilo individual do card */
 .card {
   background-color: #121212;
   border: 1px solid #2a2a2a;
   border-radius: 16px;
   padding: 30px;
-  max-width: 650px;
   width: 100%;
+  max-width: 380px;      /* Largura máxima individual de cada card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
 }
 
@@ -47,11 +56,10 @@ p {
   font-style: italic;
 }
 
-/* Estilização e controle de tamanho da imagem */
+/* Imagem ajustada para o card */
 .post-image {
   width: 100%;
-  max-width: 500px;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   object-position: center;
   border-radius: 12px;
@@ -62,7 +70,7 @@ p {
 /* Container dos botões */
 .reaction-container {
   display: flex;
-  flex-wrap: wrap; /* Adicionado para quebrar a linha */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
   margin-top: 24px;
@@ -73,8 +81,8 @@ p {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
-  font-size: 18px;
+  padding: 10px 20px;
+  font-size: 16px;
   font-weight: 600;
   color: #ffffff;
   background-color: #1e1e1e;
